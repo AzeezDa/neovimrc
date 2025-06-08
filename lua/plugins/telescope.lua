@@ -9,6 +9,7 @@ return {
         vim.keymap.set('n', '<leader>ps', builtin.live_grep, { desc = 'Telescope live grep' })
         vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = 'Telescope buffers' })
         vim.keymap.set('n', '<leader>ph', builtin.help_tags, { desc = 'Telescope help tags' })
+        vim.keymap.set('n', '<leader>pd', builtin.lsp_workspace_symbols, { desc = 'Telescope workspace symbols' })
         vim.keymap.set('n', '<leader>cf',
             "<cmd> :Telescope find_files cwd=~/.config/nvim<CR>",
             { desc = 'Telescope nvim config' })
