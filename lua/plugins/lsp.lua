@@ -19,20 +19,16 @@ return {
                         border = 'rounded',
                     }
                 end, { buffer = event.buf })
+                vim.lsp.inlay_hint.enable(true)
+                vim.lsp.codelens.refresh();
             end,
         })
 
-        vim.diagnostic.config({
-            underline = true,
-            update_in_insert = true,
-            float = {
-                focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = true,
-                header = "",
-                prefix = ""
-            },
-        })
+        vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePost', 'TextChanged' }, {
+            callback = function ()
+                vim.schedule(function()
+                    vim.lsp.codelens.refresh();
+                end)
+            end})
     end
 }
